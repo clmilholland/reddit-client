@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postPreviewReducer from '../features/postPreviews/postPreviewSlice';
+import gatherPostsReducer from '../features/gatherPosts/gatherPostsSlice';
 import userProfileReducer from '../features/userProfile/userProfileSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    postPreview: postPreviewReducer,
+    gatherPosts: gatherPostsReducer,
     userProfile: userProfileReducer,
   },
 });
+
+export default store;

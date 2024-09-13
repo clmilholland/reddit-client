@@ -1,13 +1,14 @@
 import React from 'react';
-import PostPreview from './features/postPreviews/PostPreview';
+import GatherPosts from './features/gatherPosts/GatherPosts';
 
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-       <PostPreview />
+       <GatherPosts />
       </header>
     </div>
   );

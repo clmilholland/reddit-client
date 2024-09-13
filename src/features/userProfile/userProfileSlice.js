@@ -3,16 +3,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 
- export const loadUserProfile = createAsyncThunk(
+export const loadUserProfile = createAsyncThunk(
      'userProfile/loadUserProfile',
     async(username) => {
          const data = await fetch(`https://www.reddit.com/user/${username}/about.json`);
          const response = await data.json();
         return response;
-     }
- );
+    }
+);
 
-export const userProfileSlice = createSlice({
+ const userProfileSlice = createSlice({
     name: 'userProfile',
     initialState: {
         users: [],
