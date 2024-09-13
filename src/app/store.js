@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import postPreviewReducer from '../features/postPreviews/postPreviewSlice';
+import userProfileReducer from '../features/userProfile/userProfileSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    postPreview: postPreviewReducer,
+    userProfile: userProfileReducer,
   },
 });
