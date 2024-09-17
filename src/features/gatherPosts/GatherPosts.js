@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPosts, loadAllPosts } from "./gatherPostsSlice";
-import Post from "../../components/post";
+import Post from "../../components/post/post";
 import { loadUserProfile, selectAllUsers } from "../userProfile/userProfileSlice";
 import { searchInput } from "../../components/searchbar/searchbarSlice";
 
