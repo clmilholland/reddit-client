@@ -1,0 +1,54 @@
+import React, {useEffect, useState} from "react";
+import { HiSearch } from "react-icons/hi";
+import './searchbar.css';
+import { setSearch, clearSearch, searchInput } from "./searchbarSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
+const Searchbar = () => {
+    const dispatch = useDispatch();
+    const searchbar = useSelector(searchInput);
+    const [searchTerm, setSearchTerm] = useState('')
+
+    const handleChange = (event) => {
+        setSearchTerm(event.target.value);
+    }
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        dispatch(setSearch(searchTerm));
+    };
+
+    const handleClearSearch = () => {
+        setSearchTerm('');
+        dispatch(clearSearch(searchTerm));
+    }
+
+    
+    console.log(searchTerm)
+  
+
+
+    return (
+        <div className='searchContainer'>
+            <HiSearch className='searchIcon'/>
+            <form onSubmit={handleSearch}>
+                <input 
+                    id="search"
+                    type='text' 
+                    placeholder='Search Reddit' 
+                    className='searchBar' 
+                    onChange={handleChange}
+                    value={searchTerm} 
+                /> 
+                <button                                                
+                    type="submit">
+                </button>
+            </form>
+        </div>
+    );
+}
+
+ 
+export default Searchbar;

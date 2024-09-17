@@ -1,0 +1,29 @@
+.headerContainer {
+    background-color: #13171A;
+    width: 100%;
+    height: 3rem;
+    justify-content: left;
+    display: flex;
+}
+
+.redditLogo {
+    position: relative;
+    scale: 12%;
+    right: 35%
+}
+
+.redditAnchor {
+    color: #CACCCD;
+    position: relative;
+    right: 70%;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.redditAnchorContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
