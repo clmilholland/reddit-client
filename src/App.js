@@ -2,19 +2,17 @@ import React from 'react';
 import GatherPosts from './features/gatherPosts/GatherPosts';
 import Header from './components/header/header';
 import './App.css';
-import GatherSubreddits from './features/subreddits/subreddits';
+import SideNav from './components/sideNav/sideNav';
 
-function App(props) {
-
-  const {dispatch, state} = props;
+function App() {
 
   return (
     <div className="App">
       <header className="App-header">
-        <Header searchbar={state.searchbar}/>
+        <Header />
       </header>
       <body className='body'>
-        <GatherSubreddits/>
+        <SideNav />
         <GatherPosts />
       </body>
     </div>

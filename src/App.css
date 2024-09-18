@@ -1,3 +1,10 @@
 .body {
   display: flex;
+  background-color: #121212;
+  height: 100%;
 }
+
+.App {
+  height: 100%;
+}
+

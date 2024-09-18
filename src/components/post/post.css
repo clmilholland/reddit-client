@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     background-color: #121212;
     color: #cacccd;
-    width: 40%;
+    height: fit-content;
     padding: 1rem;
     border-bottom: 1px solid #2A3236;
 }
@@ -11,17 +11,19 @@
 .user {
     display: flex;
     width: 100%;
-    height: 4rem;
+    height: 2rem;
 }
 
 .userProfilePic {
-    width: 3rem;
-    height: 3rem;
+    width: auto;
+    height: 100%;
     margin-right: .5rem;
 }
 
 .userProfileName {
-    font-size: medium;
+    font-size: smaller;
+    margin: 0;
+    align-content: center;
 }
 
 .title {
@@ -30,10 +32,16 @@
     height: fit-content;
 }
 
-.text {
+.textContainer {
     height: fit-content;
+    max-height: 10rem;
+}
+
+.text {
+    height: 10rem;
     overflow-y: scroll;
-    max-height: 21rem;
+    margin: 0;
+    
 }
 
 ::-webkit-scrollbar {

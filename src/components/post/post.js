@@ -83,8 +83,8 @@ const Post = ({post, userProfile}) => {
     return (
         <div className="postContainer" >
             <div className="user" >{displayUser}</div>
-            <h3 className="title" >{post.data.title}</h3>
-            <div>{selfText}</div>
+            <h4 className="title" >{post.data.title}</h4>
+            {selfText}
             {thumbnail}
             <div className="postData" >
                 <div className="ups" >

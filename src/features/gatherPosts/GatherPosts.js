@@ -4,6 +4,7 @@ import { selectAllPosts, loadAllPosts } from "./gatherPostsSlice";
 import Post from "../../components/post/post";
 import { loadUserProfile, selectAllUsers } from "../userProfile/userProfileSlice";
 import { searchInput } from "../../components/searchbar/searchbarSlice";
+import './gatherPosts.css';
 
 const GatherPosts = () => {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const GatherPosts = () => {
     
     return (
         <>           
-            <div>
+            <div className="allPostsContainer" >
                 {userPosts.map((post, index) => (
                     <Post 
                         post={post} 
