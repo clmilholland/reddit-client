@@ -38,10 +38,10 @@
 }
 
 .text {
-    height: 10rem;
+    height: fit-content;
     overflow-y: scroll;
     margin: 0;
-    
+    max-height: 10rem;
 }
 
 ::-webkit-scrollbar {
