@@ -5,6 +5,7 @@ import Post from "../../components/post/post";
 import { loadUserProfile, selectAllUsers } from "../userProfile/userProfileSlice";
 import { searchInput } from "../../components/searchbar/searchbarSlice";
 import './gatherPosts.css';
+import { getPopularSubreddits } from "../popularSubreddits/popularSubreddits";
 
 const GatherPosts = () => {
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const GatherPosts = () => {
     }
    
     
-
+   
     console.log(userPosts)
     console.log(usernames)
     console.log(userProfiles)
