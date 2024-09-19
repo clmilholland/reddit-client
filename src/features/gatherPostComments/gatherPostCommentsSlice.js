@@ -18,6 +18,7 @@ const postCommentsSlice = createSlice ({
     name: 'postComments',
     initialState: {
         comments: [],
+        post: [],
         isPending: false,
         hasError: false
     },
@@ -30,12 +31,19 @@ const postCommentsSlice = createSlice ({
         [getPostComments.fulfilled]: (state, action) => {
             state.isPending = false;
             state.hasError = false;
-            const data = action.payload[1];
-            if (data && data.data && Array.isArray(data.data.children)) {
-                state.comments = data.data.children;
+            const data = action.payload;
+            if (data && Array.isArray(data)) {
+                state.comments = data[1].data.children;
             } else {
                 state.comments = [];
             }
+            if (data && Array.isArray(data)) {
+                state.post = data[0].data.children[0].data
+            } else {
+                state.post = [];
+            }
+            console.log(state.comments)
+            console.log(state.post)
         },
         [getPostComments.rejected]: (state) => {
             state.isPending = false;
@@ -48,4 +56,5 @@ const postCommentsSlice = createSlice ({
 
 console.log()
 export const selectAllComments = (state) => state.postComments.comments;
+export const selectPost = (state) => state.postComments.post;
 export default postCommentsSlice.reducer;

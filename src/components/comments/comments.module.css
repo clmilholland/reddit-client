@@ -1,0 +1,225 @@
+.container {
+    display: flex;
+    overflow-y: scroll;
+    width: 40%;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.postContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #121212;
+    color: #cacccd;
+    height: fit-content;
+    padding: 1rem;
+    border-bottom: 1px solid #2A3236;
+    width: 100%;
+}
+
+.userContainer {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+}
+
+.subredditPicture {
+    height: 100%;
+}
+
+.subreddit_user {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.subreddit_user h3, h4 {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+}
+
+.title {
+    width: 100%;
+    margin: 1rem 0 1rem;
+    height: fit-content;
+}
+
+.postData {
+    display: inline-flex;
+    margin-top: 1rem;
+}
+
+.data {
+    margin: 0 1rem;
+    position: relative;
+    left: .2rem;
+}
+
+.ups {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right: 1rem;
+    height: 1.5rem;
+    background-color: #2A3236;
+    border-radius: 2rem;
+    padding: .3rem 0;
+}
+
+.arrow {
+    scale: 200%;
+    margin-left: .5rem;
+    position: relative;
+    top: .2rem;
+    left: .3rem;
+}
+
+.comments {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right: 1rem;
+    height: 1.5rem;
+    background-color: #2A3236;
+    border-radius: 2rem;
+    padding: .3rem 0;
+}
+
+.comment {
+    scale: 150%;
+    margin-left: .5rem;
+    position: relative;
+    top: .2rem;
+    left: .3rem;
+    
+}
+
+.allCommentsContainer {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    margin-top: 2rem;
+}
+
+.commentContainer {
+    color: #cacccd;
+    padding: 1rem 1rem 0;
+    height: fit-content;
+    max-height: 25%;
+    
+    border-bottom: 1px solid #2A3236;
+}
+
+.author {
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+.body {
+    overflow-y: scroll;
+    max-height: 6rem;
+}
+
+.commentUps {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right: 1rem;
+    height: 2rem;
+    padding: .3rem 0;
+}
+
+.commentArrow {
+    scale: 200%;
+    
+    position: relative;
+    top: .2rem;
+    left: .3rem;
+}
+
+.commentDowns {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right: 1rem;
+    height: 2rem;
+    position: relative;
+    bottom: .1rem;
+    padding: .3rem 0;
+}
+
+
+
+
+
+.userProfilePic {
+    width: auto;
+    height: 100%;
+    margin-right: .5rem;
+}
+
+.userProfileName {
+    font-size: smaller;
+    margin: 0;
+    align-content: center;
+}
+
+
+
+.textContainer {
+    height: fit-content;
+    max-height: 10rem;
+}
+
+.text {
+    height: fit-content;
+    overflow-y: scroll;
+    margin: 0 0 1rem;
+    max-height: 10rem;
+}
+
+::-webkit-scrollbar {
+    color: transparent;
+    width: 0px;
+}
+
+.thumbnailContainer {
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.thumbnail {
+    height: 100%;
+    width: 80%;
+    
+}
+
+
+.thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+.blurBackground {
+    position: absolute;           
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;      
+    background-position: center;  
+    filter: blur(20px);           
+    z-index: 0;                  
+}
+

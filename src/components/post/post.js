@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import DOMPurify from 'dompurify';
 import snoovatar from '../../resources/images/snoovatar.png'
 import './post.css';
@@ -8,30 +8,29 @@ import { getPostComments } from "../../features/gatherPostComments/gatherPostCom
 import { useDispatch, useSelector } from "react-redux";
 import PostComments from "../comments/comments";
 import { Link, useNavigate } from "react-router-dom";
+import { makeClickableLinks, determineSelfText } from "./postFormatting";
 
 const Post = ({post, userProfile}) => {
     const dispatch = useDispatch()
     const isPending = useSelector((state) => state.postComments.isPending)
     const hasError = useSelector((state) => state.postComments.hasError)
     const navigate = useNavigate();
+    const [text, setText] = useState(null);
     
-    function makeClickableLinks (text) {
-        const cleanedText = text.replace(/[\[\]\(\)\*]/g, '');
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        const html = cleanedText.replace(urlRegex, (url) => {
-            return ` <a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a> `;
-        });
-        return DOMPurify.sanitize(html)
-    };
-    const text = makeClickableLinks(post.data.selftext);
+    //const text = makeClickableLinks(post.data.selftext);
     
+    useEffect(() => {
+        console.log(post.data.selftext)
+        if (post.data.selftext) {
+            const selftext = determineSelfText(post.data.selftext);
+            setText(selftext);
+        }
+        
+    }, [post.data.selftext])
 
-    const determineSelfText = () => {
-        if (post.data.selftext !== '') {
-            return <p dangerouslySetInnerHTML={{ __html: text}} className="text" ></p>;
-        } 
-    }
-    const selfText = determineSelfText();
+    console.log(text)
+
+    
     
     
     
@@ -106,7 +105,7 @@ const Post = ({post, userProfile}) => {
         <div className="postContainer" >
             <div className="user" >{displayUser}</div>
             <h4 className="title" >{post.data.title}</h4>
-            {selfText}
+            {text}
             {thumbnail}
             <div className="postData" >
                 <div className="ups" >
@@ -124,5 +123,6 @@ const Post = ({post, userProfile}) => {
         </div>
     )
 }
+
 
 export default Post;
