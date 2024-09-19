@@ -18,3 +18,9 @@ html, body {
   width: 100vw;  /* 100% of the viewport width */
   overflow: hidden; /* Prevent any scrolling */
 }
+
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}

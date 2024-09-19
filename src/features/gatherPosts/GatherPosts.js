@@ -40,7 +40,7 @@ const GatherPosts = () => {
     
    
     console.log(userPosts)
-    console.log(usernames)
+    //console.log(usernames)
     console.log(userProfiles)
     
     

@@ -12,10 +12,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App
-        state={store.getState()}
-        dispatch={store.dispatch}
-      />
+      <App/>
     </Provider>
   </React.StrictMode>
 );

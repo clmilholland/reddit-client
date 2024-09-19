@@ -16,8 +16,11 @@ const Searchbar = () => {
     }
 
     const handleSearch = (event) => {
-        event.preventDefault();
-        dispatch(setSearch(searchTerm));
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            dispatch(setSearch(searchTerm));
+        }
+        
     };
 
     const handleClearSearch = () => {
@@ -33,7 +36,7 @@ const Searchbar = () => {
     return (
         <div className='searchContainer'>
             <HiSearch className='searchIcon'/>
-            <form onSubmit={handleSearch}>
+            <form onKeyDown={handleSearch} className="form">
                 <input 
                     id="search"
                     type='text' 
@@ -42,9 +45,7 @@ const Searchbar = () => {
                     onChange={handleChange}
                     value={searchTerm} 
                 /> 
-                <button                                                
-                    type="submit">
-                </button>
+                
             </form>
         </div>
     );

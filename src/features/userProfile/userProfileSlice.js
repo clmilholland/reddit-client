@@ -24,6 +24,7 @@ export const loadUserProfile = createAsyncThunk(
         [loadUserProfile.pending]: (state) => {
             state.isPending = true;
             state.hasError = false;
+            state.users = [];
         },
         [loadUserProfile.fulfilled]: (state, action) => {
             state.isPending = false;

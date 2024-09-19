@@ -6,6 +6,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadAllPosts = createAsyncThunk(
     'postPreviews/loadAllPosts',
     async (searchbar) => {
+        console.log(searchbar)
         let data;
         if (searchbar === ''){
              data = await fetch(`https://www.reddit.com/r/popular/.json`);
