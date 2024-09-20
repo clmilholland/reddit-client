@@ -57,11 +57,11 @@ const Post = ({post, userProfile}) => {
     }
     const thumbnail = determineThumbnail(post.data?.preview)
 
-    
+    console.log(userProfile)
     const determineUserProfile = () => {
         let i = 0;
         for ( i ; i < userProfile.length; i++) {
-            if (userProfile[i].name === post.data.author) {
+            if (userProfile?.[i].name === post.data.author) {
                 if (userProfile[i].snoovatar_img === "") {
                     return (
                         <>

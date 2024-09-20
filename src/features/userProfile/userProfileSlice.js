@@ -30,8 +30,8 @@ export const loadUserProfile = createAsyncThunk(
             state.hasError = false;
             const {data} = action.payload;
             if (state.users.length < 25) {
-                state.users.push(data)
-            }
+                state.users = data
+            } 
         },
         [loadUserProfile.rejected]: (state) => {
             state.isPending = false;
