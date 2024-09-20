@@ -7,10 +7,12 @@ import PostComments from './components/comments/comments';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Root from './components/root';
 import Post from './components/post/post';
+import GatherHeader from './features/gatherSubredditHeader/gatherSubredditHeader';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={ <Root/> }>
       <Route index element={<GatherPosts/>}/>
+      {/* <Route  element={ <GatherHeader/> }/> */}
       <Route element={<Post/>}/>
       <Route path='/comments' element={ <PostComments/> } />
     </Route>

@@ -20,7 +20,6 @@ const Post = ({post, userProfile}) => {
     //const text = makeClickableLinks(post.data.selftext);
     
     useEffect(() => {
-        console.log(post.data.selftext)
         if (post.data.selftext) {
             const selftext = determineSelfText(post.data.selftext);
             setText(selftext);
@@ -28,7 +27,7 @@ const Post = ({post, userProfile}) => {
         
     }, [post.data.selftext])
 
-    console.log(text)
+    
 
     
     

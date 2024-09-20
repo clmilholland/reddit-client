@@ -5,7 +5,9 @@ import Post from "../../components/post/post";
 import { loadUserProfile, selectAllUsers } from "../userProfile/userProfileSlice";
 import { searchInput } from "../../components/searchbar/searchbarSlice";
 import './gatherPosts.css';
-import { getPopularSubreddits } from "../popularSubreddits/popularSubreddits";
+import GatherHeader from "../gatherSubredditHeader/gatherSubredditHeader";
+import GatherSubredditDetails from "../gatherSubredditDetails/gatherSubredditDetails";
+
 
 const GatherPosts = () => {
     const dispatch = useDispatch();
@@ -45,7 +47,8 @@ const GatherPosts = () => {
     
     
     return (
-        <>           
+        <>  
+            <GatherHeader />
             <div className="allPostsContainer" >
                 {userPosts.map((post, index) => (
                     <Post 
@@ -54,7 +57,8 @@ const GatherPosts = () => {
                         userProfile={userProfiles}
                     />
                 ))}
-            </div>           
+            </div> 
+            <GatherSubredditDetails />          
         </>
     )
 }

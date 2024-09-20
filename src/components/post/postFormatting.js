@@ -13,7 +13,6 @@ export function makeClickableLinks (text) {
 
 
 export const determineSelfText = (selftext) => {
-    console.log(selftext)
     if (selftext !== '') {
         const sanitizedText = makeClickableLinks(selftext)
         console.log(sanitizedText)

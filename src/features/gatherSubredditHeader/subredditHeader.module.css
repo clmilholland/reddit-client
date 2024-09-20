@@ -1,0 +1,48 @@
+.headerContainer {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.banner {
+    height: 60%;
+    width: 60%;
+    display: inline-flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bannerImage {
+    height: 100%;
+    width: 100%;
+}
+
+.icon_subredditContainer {
+    width: 55%;
+    height: 40%;
+    display: inline-flex;
+    position: relative;
+    bottom: 2rem;
+}
+
+.iconContainer {
+    height: 100%;
+    width: 6rem;
+}
+
+.iconImage {
+    height: 100%;
+}
+
+.subredditContainer {
+    align-content: end;
+}
+
+.subreddit {
+    margin: 0;
+    position: relative;
+    top: .5rem;
+    right: .5rem;
+}

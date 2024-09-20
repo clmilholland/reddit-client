@@ -6,7 +6,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadUserProfile = createAsyncThunk(
      'userProfile/loadUserProfile',
     async(username) => {
-        console.log(username)
          const data = await fetch(`https://www.reddit.com/user/${username}/about.json`);
          const response = await data.json();
         return response;

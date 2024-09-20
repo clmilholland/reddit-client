@@ -6,4 +6,5 @@
     background-color: #121212;
     color: #cacccd;
     justify-content: center;
+    flex-wrap: wrap;
 }
