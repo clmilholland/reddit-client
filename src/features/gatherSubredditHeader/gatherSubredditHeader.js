@@ -17,7 +17,9 @@ const GatherHeader = () => {
     
     console.log(searchParam)
     useEffect(() => {
+        if (searchParam) {
             dispatch(gatherHeader(searchParam))
+        }     
     },[dispatch])
 
     console.log(subredditData)
@@ -64,7 +66,7 @@ const GatherHeader = () => {
                         <img src={communityIcon} className={styles.iconImage} />
                     </div>
                     <div className={styles.subredditContainer}>
-                        <h1 className={styles.subreddit} >{subredditData.data?.display_name_prefixed}</h1>
+                        <h1 className={styles.subreddit} >{Object.keys(subredditData).length > 0 ? subredditData.data?.display_name_prefixed : 'r/Home'}</h1>
                     </div>
                 </div>
             </div>

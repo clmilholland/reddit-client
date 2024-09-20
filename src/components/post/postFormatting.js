@@ -15,7 +15,6 @@ export function makeClickableLinks (text) {
 export const determineSelfText = (selftext) => {
     if (selftext !== '') {
         const sanitizedText = makeClickableLinks(selftext)
-        console.log(sanitizedText)
         return <p dangerouslySetInnerHTML={{ __html: sanitizedText}} className="text" ></p>;
     } 
     return null;

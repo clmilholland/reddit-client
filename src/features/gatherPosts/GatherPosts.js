@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPosts, loadAllPosts } from "./gatherPostsSlice";
 import Post from "../../components/post/post";
@@ -15,19 +15,28 @@ const GatherPosts = () => {
     const isPending = useSelector((state) => state.gatherPosts.isPending)
     const hasError = useSelector((state) => state.gatherPosts.hasError)
     const userProfiles = useSelector(selectAllUsers)
-    const usernames = [];
+    const [usernames, setUsernames] = useState([]);
     const searchbar = useSelector(searchInput)
     console.log(searchbar)
 
     useEffect(() => {
         dispatch(loadAllPosts(searchbar));
-    },[searchbar]);
+    },[searchbar, dispatch]);
 
     
     useEffect(() => {
-        userPosts.map((user) => usernames.push(user.data.author))
-        usernames.map((username) => dispatch(loadUserProfile(username)))
-    },[userPosts]);
+        if (userPosts.length > 0) {
+            const newNames = userPosts.map((user) => user.data.author);
+            setUsernames(newNames);  // Update the state with the new usernames
+        }
+    }, [userPosts]);
+
+    // Dispatch loadUserProfile for each username
+    useEffect(() => {
+        usernames.forEach((username) => {
+            dispatch(loadUserProfile(username));
+        });
+    }, [usernames, dispatch]);
 
     if (isPending) {
         return <div>Loading posts...</div>
@@ -42,7 +51,7 @@ const GatherPosts = () => {
     
    
     console.log(userPosts)
-    //console.log(usernames)
+    console.log(usernames)
     console.log(userProfiles)
     
     

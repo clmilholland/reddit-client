@@ -8,8 +8,8 @@ export const loadAllPosts = createAsyncThunk(
     async (searchbar) => {
         console.log(searchbar)
         let data;
-        if (searchbar === ''){
-             data = await fetch(`https://www.reddit.com/r/popular/.json`);
+        if (!searchbar){
+             data = await fetch(`https://www.reddit.com/.json`);
         } else {
             data = await fetch(`https://www.reddit.com/r/${searchbar}/.json`);
         }
@@ -22,6 +22,7 @@ const gatherPostsSlice = createSlice({
     name: 'gatherPosts',
     initialState: {
         posts: [],
+        history: [],
         isPending: false,
         hasError: false
     },
@@ -36,6 +37,8 @@ const gatherPostsSlice = createSlice({
             const data = action.payload?.data;
             if (data && Array.isArray(data.children)) {
                 state.posts = data.children;
+                state.history.push(data.children?.[0]?.data?.subreddit);
+                console.log(state.history)
             } else {
                 state.posts = [];
             }
@@ -49,5 +52,6 @@ const gatherPostsSlice = createSlice({
 });
 
     
-export const selectAllPosts = (state) => state.gatherPosts.posts;    
+export const selectAllPosts = (state) => state.gatherPosts.posts;
+export const selectAllHistory = (state) => state.gatherPosts.history;    
 export default gatherPostsSlice.reducer;

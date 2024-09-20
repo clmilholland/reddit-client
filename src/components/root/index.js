@@ -11,7 +11,7 @@ const Root = () => {
                 <main className="main">
                     <Outlet/>
                 </main>
-            <SideNav />
+            <SideNav /> 
         </>
     )
 }
