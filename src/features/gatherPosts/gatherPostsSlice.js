@@ -37,7 +37,10 @@ const gatherPostsSlice = createSlice({
             const data = action.payload?.data;
             if (data && Array.isArray(data.children)) {
                 state.posts = data.children;
-                state.history.push(data.children?.[0]?.data?.subreddit);
+                if (!state.history.includes(data.children?.[0]?.data?.subreddit)) {
+                    state.history.push(data.children?.[0]?.data?.subreddit);
+                }
+                
                 console.log(state.history)
             } else {
                 state.posts = [];
@@ -47,6 +50,7 @@ const gatherPostsSlice = createSlice({
         [loadAllPosts.rejected]: (state) => {
             state.isPending = false;
             state.hasError = true;
+            alert('Oh no! you have reached the API limit. Please try again in a few minutes')
         }
     }
 });

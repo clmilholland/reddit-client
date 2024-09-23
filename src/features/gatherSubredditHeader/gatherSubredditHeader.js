@@ -45,7 +45,7 @@ const GatherHeader = () => {
         }
     }
     
-    const communityIcon = determineCommunityIcon(subredditData.data?.community_icon)
+    const communityIcon = determineCommunityIcon(subredditData.data?.icon_img ? subredditData.data?.icon_img : subredditData.data?.community_icon )
     
 
     if (isPending) {

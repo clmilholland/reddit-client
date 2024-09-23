@@ -112,7 +112,7 @@ const Post = ({post, userProfile}) => {
                     <p className="data" >{post.data.ups}</p>
                 </div>    
                     
-                <a  className="comments" onClick={loadComments} >
+                <a  className="comments" onClick={loadComments}  >
                     <FaRegCommentAlt className="comment" />
                     <p className="data" >{post.data.num_comments}</p>
                 </a>

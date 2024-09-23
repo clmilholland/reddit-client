@@ -4,6 +4,7 @@
     height: 3rem;
     justify-content: left;
     display: flex;
+    border-bottom: 1px solid #2A3236;
 }
 
 .redditLogo {

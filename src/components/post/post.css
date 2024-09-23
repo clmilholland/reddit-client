@@ -124,6 +124,11 @@
     padding: .3rem 0;
 }
 
+.comments:hover {
+    background-color: #394449;
+    cursor: pointer;
+}
+
 .arrow {
     scale: 200%;
     margin-left: .5rem;
