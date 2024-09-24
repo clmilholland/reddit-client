@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from "react";
 import styles from './sideNav.module.css';
 import { selectAllHistory } from "../../features/gatherPosts/gatherPostsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { loadAllPosts } from "../../features/gatherPosts/gatherPostsSlice";
 import { gatherHeader } from "../../features/gatherSubredditHeader/gatherSubredditHeaderSlice";
 import { HiHome, HiOutlineSparkles } from "react-icons/hi";
@@ -80,7 +80,7 @@ const SideNav = () => {
         <>
             <div className={styles.sideNavContainer}>
                 <div className={styles.homeContainer} >
-                    <button type="button" onClick={() => handleClick()} ><HiHome className={styles.icon}/>Home</button>
+                    <button type="button" onClick={() => handleClick('')} ><HiHome className={styles.icon}/>Home</button>
                     <button type="button" onClick={() => handleClick('popular')} ><HiOutlineSparkles className={styles.icon}/>Popular</button>
                 </div>
                 <div className={styles.recentContainer} >

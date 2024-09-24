@@ -12,7 +12,7 @@ import GatherHeader from './features/gatherSubredditHeader/gatherSubredditHeader
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={ <Root/> }>
       <Route index element={<GatherPosts/>}/>
-      {/* <Route  element={ <GatherHeader/> }/> */}
+      <Route path='/home' element={<GatherPosts/>} />
       <Route element={<Post/>}/>
       <Route path='/comments' element={ <PostComments/> } />
     </Route>

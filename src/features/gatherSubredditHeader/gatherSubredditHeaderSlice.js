@@ -4,14 +4,13 @@ import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 export const gatherHeader = createAsyncThunk(
     'gatherSubredditHeader/gatherHeader',
     async (searchParam) => {
+        console.log(searchParam)
         if (searchParam) {
             const data = await fetch(`https://www.reddit.com/subreddits/search.json?q=${searchParam}`);
             const response = await data.json();
             return response;
         } else {
-            const data = await fetch(`https://www.reddit.com/subreddits/search.json?q=Home`);
-            const response = await data.json();
-            return response;
+            return searchParam;
         }
         
     }
