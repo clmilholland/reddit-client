@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect} from "react";
 import styles from './sideNav.module.css';
 import { selectAllHistory } from "../../features/gatherPosts/gatherPostsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+
 import { loadAllPosts } from "../../features/gatherPosts/gatherPostsSlice";
 import { gatherHeader } from "../../features/gatherSubredditHeader/gatherSubredditHeaderSlice";
 import { HiHome, HiOutlineSparkles } from "react-icons/hi";
@@ -14,19 +14,19 @@ const SideNav = () => {
     const dispatch = useDispatch();
     const history = useSelector(selectAllHistory);
     const subredditData = useSelector(selectSubreddit);
-    const [historyList, setHistoryList] = useState([]);
     const [recentIcons, setRecentIcons] = useState([]);
 
     console.log(history)
+    const historyList = Array.isArray(history) ? history.slice(1) : [];
 
-    useEffect(() => {
-        if (Array.isArray(history) && !historyList.includes(history)) {
-            const list = history.slice(1)
-            setHistoryList(list);  
-        } else {
-            setHistoryList([]);  
-        }
-    }, [history]);
+    // useEffect(() => {
+    //     if (Array.isArray(history) && !historyList.includes(history)) {
+    //         const list = history.slice(1)
+    //         setHistoryList(list);  
+    //     } else {
+    //         setHistoryList([]);  
+    //     }
+    // },[history]);
 
     
 
@@ -53,24 +53,26 @@ const SideNav = () => {
     console.log(subredditData)
     
     console.log(subredditData.data?.icon_img)
-    useEffect(() => {
-        if (history.length > 0) {
+     useEffect(() => {
+        if (historyList.length > 0) {
 
         
-        const communityIcon = determineCommunityIcon(subredditData.data?.icon_img ? subredditData.data?.icon_img : subredditData.data?.community_icon )
-            if (!recentIcons.includes(communityIcon)) {
+         const communityIcon = determineCommunityIcon(subredditData.data?.icon_img ? subredditData.data?.icon_img : subredditData.data?.community_icon )
+             if (!recentIcons.includes(communityIcon)) {
                 
-                setRecentIcons((prev) => [...prev, communityIcon])
-            }
+                 setRecentIcons((prev) => [...prev, communityIcon])
+             }
             
-         else {
-            const communityIcon = determineCommunityIcon()
-            if (!recentIcons.includes(communityIcon)) {
-                setRecentIcons((prev) => [...prev, communityIcon])
-            }
+          else {
+             const communityIcon = determineCommunityIcon()
+             if (!recentIcons.includes(communityIcon)) {
+                 setRecentIcons((prev) => [...prev, communityIcon])
+             }
         }
-        }
-    },[subredditData])
+         }
+     },[subredditData, historyList.length, recentIcons])
+
+    
 
     console.log(recentIcons)
     
@@ -90,7 +92,7 @@ const SideNav = () => {
                             <div key={index} className={styles.recentButtonContainer} >
                                 {console.log(index)}
                                 <button type="button" onClick={() => handleClick(subreddit)}>
-                                    <img className={styles.icon} src={recentIcons[index]} />
+                                    <img className={styles.icon} src={recentIcons[++index]} alt="subreddit icon" />
                                     r/{subreddit}
                                 </button>
                             </div>
@@ -104,23 +106,23 @@ const SideNav = () => {
                 <div className={styles.popularContainer}>
                     <h4>Popular Communities</h4>
                     <button type="button" onClick={() => handleClick('funny')} >
-                        <img  className={styles.icon} src="https://a.thumbs.redditmedia.com/kIpBoUR8zJLMQlF8azhN-kSBsjVUidHjvZNLuHDONm8.png"/>
+                        <img  className={styles.icon} src="https://a.thumbs.redditmedia.com/kIpBoUR8zJLMQlF8azhN-kSBsjVUidHjvZNLuHDONm8.png" alt="subreddit icon"/>
                         r/funny
                     </button>
                     <button type="button" onClick={() => handleClick('AskReddit')} >
-                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/LSHrisQApf1H5F8nWShTx3_KjTOMc3R_ss3kx3XAyXQ.png"/>
+                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/LSHrisQApf1H5F8nWShTx3_KjTOMc3R_ss3kx3XAyXQ.png" alt="subreddit icon"/>
                         r/AskReddit
                     </button>
                     <button type="button" onClick={() => handleClick('gaming')} >
-                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/0PgZl68jAxA6T1BH6uvUQ5Bz1F1GrrJLCL8oi2Gz0Ak.png"/>
+                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/0PgZl68jAxA6T1BH6uvUQ5Bz1F1GrrJLCL8oi2Gz0Ak.png" alt="subreddit icon"/>
                         r/gaming
                     </button>
                     <button type="button" onClick={() => handleClick('worldnews')} >
-                        <img  className={styles.icon} src="https://styles.redditmedia.com/t5_2qh13/styles/communityIcon_pldiwqvsyns91.png?width=256&s=1e3f0453042ba59e08945b2beab03f408a4135e4"/>
+                        <img  className={styles.icon} src="https://styles.redditmedia.com/t5_2qh13/styles/communityIcon_pldiwqvsyns91.png?width=256&s=1e3f0453042ba59e08945b2beab03f408a4135e4" alt="subreddit icon"/>
                         r/worldnews
                     </button>
                     <button type="button" onClick={() => handleClick('todayilearned')} >
-                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/B7IpR8P1mEsQIjdizK5x79s5aGfJUtKk3u2ksGZ9n2Q.png"/>
+                        <img  className={styles.icon} src="https://b.thumbs.redditmedia.com/B7IpR8P1mEsQIjdizK5x79s5aGfJUtKk3u2ksGZ9n2Q.png" alt="subreddit icon"/>
                         r/todayilearned
                     </button>
                 </div>

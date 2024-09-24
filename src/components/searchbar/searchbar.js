@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { HiSearch } from "react-icons/hi";
 import './searchbar.css';
-import { setSearch, clearSearch, searchInput } from "./searchbarSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { setSearch} from "./searchbarSlice";
+import { useDispatch} from "react-redux";
 
 
 
 const Searchbar = () => {
     const dispatch = useDispatch();
-    const searchbar = useSelector(searchInput);
     const [searchTerm, setSearchTerm] = useState('')
 
     const handleChange = (event) => {
@@ -23,10 +22,10 @@ const Searchbar = () => {
         
     };
 
-    const handleClearSearch = () => {
-        setSearchTerm('');
-        dispatch(clearSearch(searchTerm));
-    }
+    // const handleClearSearch = () => {
+    //     setSearchTerm('');
+    //     dispatch(clearSearch(searchTerm));
+    // }
 
     
     console.log(searchTerm)

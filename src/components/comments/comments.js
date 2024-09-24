@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { selectAllComments, selectPost } from "../../features/gatherPostComments/gatherPostCommentsSlice";
-import { getPostComments } from "../../features/gatherPostComments/gatherPostCommentsSlice";
 import styles from './comments.module.css';
-import { useLocation } from "react-router-dom";
-import { makeClickableLinks, determineSelfText } from "../post/postFormatting";
+import { determineSelfText } from "../post/postFormatting";
 import { LuArrowBigUp, LuArrowBigDown } from "react-icons/lu";
 import { FaRegCommentAlt } from "react-icons/fa";
 import snoovatar  from '../../resources/images/snoovatar.png'
@@ -12,10 +10,9 @@ import snoovatar  from '../../resources/images/snoovatar.png'
 
 const PostComments = () => {
 
-    const dispatch = useDispatch();
+    
     const allComments = useSelector(selectAllComments);
     const post = useSelector(selectPost);
-    //const text = makeClickableLinks(post.selftext)
     const [text, setText] = useState(null);
     
     useEffect(() => {
@@ -43,7 +40,7 @@ const PostComments = () => {
                     <div className={styles.thumbnailContainer}  >
                         <div className={styles.blurBackground} style={backgroundStyle}></div>
                         <div className={styles.thumbnail} >
-                            <img src={decodedUrl} className={styles.thumbnailImg} ></img>
+                            <img src={decodedUrl} className={styles.thumbnailImg} alt="post thumbnail"></img>
                         </div>
                     </div>
                 </>
@@ -62,7 +59,7 @@ const PostComments = () => {
                 <div className={styles.postContainer}>
                     <div className={styles.userContainer} >
                         <div>
-                            <img className={styles.subredditPicture} src={snoovatar}/>
+                            <img className={styles.subredditPicture} src={snoovatar} alt="subreddit user icon"/>
                         </div>
                         <div className={styles.subreddit_user} >
                             <h3>{post.subreddit_name_prefixed}</h3>
@@ -78,10 +75,10 @@ const PostComments = () => {
                             <LuArrowBigUp className={styles.arrow} />
                             <p className={styles.data} >{post.ups}</p>
                         </div>                          
-                        <a className={styles.comments} >
+                        <button className={styles.comments} type="button">
                             <FaRegCommentAlt className={styles.comment} />
                             <p className={styles.data} >{post.num_comments}</p>
-                        </a>               
+                        </button>               
                     </div>
                 </div>
                 <div className={styles.allCommentsContainer}>

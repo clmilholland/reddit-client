@@ -10,10 +10,10 @@ const Header = () => {
 
     return (
         <div className='headerContainer'>
-            <a className='redditAnchorContainer'>
+            <div className='redditAnchorContainer'>
                 <img src={reddit_icon} alt='reddit logo' className='redditLogo'/>
-                <a className='redditAnchor'>Reddit</a>
-            </a>
+                <p className='redditAnchor'>Reddit</p>
+            </div>
             <Searchbar />
         </div>
     )
