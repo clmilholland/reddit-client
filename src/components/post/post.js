@@ -1,23 +1,21 @@
-import React, { useReducer, useEffect, useState } from "react";
-import DOMPurify from 'dompurify';
+import React, { useEffect, useState } from "react";
 import snoovatar from '../../resources/images/snoovatar.png'
 import './post.css';
-import { LuArrowBigUp, LuArrowBigDown } from "react-icons/lu";
+import { LuArrowBigUp} from "react-icons/lu";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { getPostComments } from "../../features/gatherPostComments/gatherPostCommentsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import PostComments from "../comments/comments";
-import { Link, useNavigate } from "react-router-dom";
-import { makeClickableLinks, determineSelfText } from "./postFormatting";
+import {Link} from "react-router-dom";
+import { determineSelfText } from "./postFormatting";
 
 const Post = ({post, userProfile}) => {
     const dispatch = useDispatch()
     const isPending = useSelector((state) => state.postComments.isPending)
     const hasError = useSelector((state) => state.postComments.hasError)
-    const navigate = useNavigate();
+    
     const [text, setText] = useState(null);
     
-    //const text = makeClickableLinks(post.data.selftext);
+    
     
     useEffect(() => {
         if (post.data.selftext) {
@@ -46,7 +44,7 @@ const Post = ({post, userProfile}) => {
                     <div className="thumbnailContainer"  >
                         <div className="blurBackground" style={backgroundStyle}></div>
                         <div className="thumbnail" >
-                            <img src={decodedUrl} className="thumbnailImg" ></img>
+                            <img src={decodedUrl} className="thumbnailImg" alt="post thumbnail" />
                         </div>
                     </div>
                 </>
@@ -65,14 +63,14 @@ const Post = ({post, userProfile}) => {
                 if (userProfile[i].snoovatar_img === "") {
                     return (
                         <>
-                            <img className="userProfilePic" src={snoovatar}></img>
+                            <img className="userProfilePic" src={snoovatar} alt="user profile icon"/> 
                             <h3 className="userProfileName" >u/{userProfile[i].name}</h3>
                         </>
                     )
                 } else {
                     return (
                         <>
-                            <img className="userProfilePic" src={userProfile[i].snoovatar_img}></img>
+                            <img className="userProfilePic" src={userProfile[i].snoovatar_img} alt="user profile icon"/>
                             <h3 className="userProfileName" >u/{userProfile[i].name}</h3>
                         </>
                     )
@@ -91,11 +89,11 @@ const Post = ({post, userProfile}) => {
         return <div>Error loading comments...</div>
     }
     const loadComments = (event) => {
-        //event.preventDefault()
+       
         
         dispatch(getPostComments(post.data.permalink))
         console.log(post.data)
-        navigate('/comments');
+       
     }
     
 
@@ -112,10 +110,10 @@ const Post = ({post, userProfile}) => {
                     <p className="data" >{post.data.ups}</p>
                 </div>    
                     
-                <a  className="comments" onClick={loadComments}  >
+                <Link to='/comments'  className="comments" onClick={loadComments}  >
                     <FaRegCommentAlt className="comment" />
                     <p className="data" >{post.data.num_comments}</p>
-                </a>
+                </Link>
                
                 
             </div>

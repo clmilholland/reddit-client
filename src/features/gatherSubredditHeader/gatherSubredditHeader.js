@@ -20,7 +20,7 @@ const GatherHeader = () => {
         if (searchParam) {
             dispatch(gatherHeader(searchParam))
         }     
-    },[dispatch])
+    },[dispatch, searchParam])
 
     console.log(subredditData)
 
@@ -59,11 +59,11 @@ const GatherHeader = () => {
         <>
             <div className={styles.headerContainer}>
                 <div className={styles.banner}>
-                    <img src={banner} className={styles.bannerImage} />
+                    <img src={banner} className={styles.bannerImage} alt="subreddit banner"/>
                 </div>
                 <div className={styles.icon_subredditContainer} >
                     <div className={styles.iconContainer}>
-                        <img src={communityIcon} className={styles.iconImage} />
+                        <img src={communityIcon} className={styles.iconImage} alt="community icon"/>
                     </div>
                     <div className={styles.subredditContainer}>
                         <h1 className={styles.subreddit} >{Object.keys(subredditData).length > 0 ? subredditData.data?.display_name_prefixed : 'r/Home'}</h1>
